@@ -1,0 +1,100 @@
+Hey! I left this planning sheet in case you'd like to discuss my thought process over a call! You can disregard this page!
+
+PLAN
+
+For each filter
+> iterate through all responses 
+--- For each response
+> grab questions, iterate through questions
+--- For the questions PER response 
+> check to see if it includes the filter
+
+filters.forEach((f) => {
+    responses.forEach((r) => {
+       const match = filterQuestions(questions, newCondition)
+        if (match) {
+            output.push(r)
+        }
+    })
+})
+
+const filterQuestions = (questions, condition) => {
+  const arr = questions.filter((q) => {
+            if (q.id === "birthdayId") {
+                return q.value + condition + f.value
+            } 
+            return q.id + condition + value
+        })
+}
+-------------------------------
+{
+	"responses": [
+		{
+			"questions": [
+				{
+					"id": "nameId",
+					"name": "Sample question 1",
+					"type": "ShortAnswer",
+					"value": "Sample Name"
+				},
+				{
+					"id": "birthdayId",
+					"name": "Sample question 2?",
+					"type": "DatePicker",
+					"value": "2024-02-22T05:01:47.691Z"
+				},
+			],
+			"submissionId": "abc",
+			"submissionTime": "Sample Submission Time"
+		},
+	],
+	"totalResponses": 1,
+	"pageCount": 1
+}
+--------------------------------
+Sample input
+[
+    {
+        id: "nameId",
+        condition: "equals",
+        value: "Sample Name
+    },
+    {
+        id: "birthdayId",
+        condition: "greater_than",
+        value: "2024-02-23T05:01:47.691Z"
+    }
+]
+------------------------------------
+Question: If a filter is selected that matches the information within a response, the entire response should be returned.
+
+// Input: Filters, ([{}])
+// First, iterate through each filter. [done]
+
+Current filter: {id: "birthdayId", condition: "greater_than", value: "2024-02-23T05:01:47.691Z"} // variable, f
+
+// Check the current condition: "equals" [done]
+// Convert the current condition: "===" [done]
+
+// Check filter value: f.value = "Sample Name" [done]
+
+// Iterate through Responses.  [done]
+// Parse the response? []
+
+Current response: Sample response 1 above // variable r
+
+// For each response, check the questions. 
+// For each response, iterate through its questionos.
+
+Current question: {"id": "nameId", "name": "Sample question 1", "type": "ShortAnswer, "value" : "Sample Name"} // variable q
+
+// Use the converted condition from before
+
+// make a match variable
+// match = if the f.id === q.id && f.value + newCondition + q.value === true 
+
+// return a boolean to confirm that there is a match 
+// return the report
+
+
+Output: Responses that match filters (FilterResponses)
